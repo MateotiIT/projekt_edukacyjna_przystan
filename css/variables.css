@@ -1,0 +1,74 @@
+:root {
+  /* Colors */
+  --color-bg: #FAFAF7;
+  --color-surface: #FFFFFF;
+  --color-surface-alt: #FFF6EE;
+  --color-ink: #24262B;
+  --color-ink-muted: #5B5F6B;
+
+  --color-primary: #2F6FED;
+  --color-primary-dark: #1E4FBF;
+  --color-primary-light: #E7EFFE;
+
+  --color-coral: #FF6F59;
+  --color-coral-dark: #E85A45;
+  --color-coral-light: #FFE4DE;
+
+  --color-yellow: #FFC93C;
+  --color-yellow-dark: #F0AF12;
+  --color-purple: #8B5CF6;
+  --color-purple-light: #EFE7FE;
+  --color-red: #EF4444;
+
+  --color-border: #E7E5E0;
+  --color-success: #2FAE66;
+  --color-success-light: #E4F7EC;
+  --color-error: #E4432E;
+  --color-error-light: #FDEAE7;
+
+  --focus-ring: 0 0 0 3px rgba(47, 111, 237, 0.35);
+
+  /* Typography */
+  --font-heading: 'Baloo 2', system-ui, sans-serif;
+  --font-body: 'Quicksand', system-ui, sans-serif;
+
+  --fs-h1: clamp(2.25rem, 4vw + 1rem, 3.5rem);
+  --fs-h2: clamp(1.75rem, 2.5vw + 1rem, 2.5rem);
+  --fs-h3: clamp(1.25rem, 1.2vw + 1rem, 1.5rem);
+  --fs-h4: 1.125rem;
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-lead: clamp(1.05rem, 0.6vw + 1rem, 1.25rem);
+
+  /* Spacing scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --space-10: 8rem;
+
+  /* Radius */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(36, 38, 43, 0.06);
+  --shadow-md: 0 8px 24px rgba(36, 38, 43, 0.10);
+  --shadow-lg: 0 16px 40px rgba(36, 38, 43, 0.16);
+
+  /* Layout */
+  --container-max: 1180px;
+
+  /* Breakpoints (referenced in comments; media queries use literal px) */
+  --bp-sm: 480px;
+  --bp-md: 768px;
+  --bp-lg: 1024px;
+  --bp-xl: 1280px;
+}
