@@ -2,6 +2,10 @@ function createCourseCard(course) {
   const card = document.createElement("article");
   card.className = "course-card reveal";
 
+  const scheduleList = course.schedule && course.schedule.length
+    ? `<ul class="course-schedule">${course.schedule.map((slot) => `<li>${slot}</li>`).join("")}</ul>`
+    : "";
+
   card.innerHTML = `
     <div class="course-card-media">
       <img src="${course.image}" alt="${course.title}" width="600" height="450" loading="lazy">
@@ -9,6 +13,7 @@ function createCourseCard(course) {
     <div class="course-card-body">
       <h4>${course.title}</h4>
       <p>${course.description}</p>
+      ${scheduleList}
       <button type="button" class="btn btn-primary btn-block js-signup-trigger"
         data-course-id="${course.id}" data-course-title="${course.title}">
         Zapisz się
