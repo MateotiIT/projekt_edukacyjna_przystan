@@ -314,6 +314,21 @@ a.nav-cta-mobile {
   border-radius: var(--radius-pill);
 }
 
+.track-heading .track-tag-soon {
+  color: var(--color-coral-dark);
+  background: var(--color-coral-light);
+}
+
+.course-placeholder {
+  color: var(--color-ink-muted);
+  background: var(--color-surface);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  text-align: center;
+  grid-column: 1 / -1;
+}
+
 .course-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
