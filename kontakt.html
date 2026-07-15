@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontakt — Edukacyjna Przystań</title>
+  <meta name="description" content="Skontaktuj się z Edukacyjną Przystanią - napisz przez formularz, zadzwoń, napisz na Messengerze lub odwiedź nas osobiście.">
+  <link rel="canonical" href="https://edukacyjnaprzystan.pl/kontakt.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Kontakt — Edukacyjna Przystań">
+  <meta property="og:description" content="Napisz, zadzwoń lub odwiedź nas osobiście - chętnie odpowiemy na wszystkie pytania.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1200&h=630&q=80">
+  <meta property="og:locale" content="pl_PL">
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Przejdź do treści</a>
+
+  <header class="site-header" id="site-header">
+    <nav class="nav container" aria-label="Nawigacja główna">
+      <a class="logo" href="index.html">
+        <span class="logo-badge" aria-hidden="true">EP</span>
+        <span class="logo-text">Edukacyjna Przystań</span>
+      </a>
+
+      <button id="nav-toggle" class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Otwórz menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul id="nav-menu" class="nav-menu">
+        <li><a href="index.html#start">Start</a></li>
+        <li><a href="index.html#zajecia">Zajęcia</a></li>
+        <li><a href="kursy.html">Wszystkie kursy</a></li>
+        <li><a href="misja.html">Misja</a></li>
+        <li><a href="kontakt.html" aria-current="page">Kontakt</a></li>
+        <li><a class="btn btn-primary nav-cta-mobile" href="kursy.html">Zapisz się</a></li>
+      </ul>
+
+      <a class="btn btn-primary nav-cta" href="kursy.html">Zapisz się</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- ================= KONTAKT - NAGŁÓWEK ================= -->
+    <section class="contact-page reveal">
+      <div class="container section-head">
+        <span class="eyebrow">Kontakt</span>
+        <h1>Skontaktuj się z nami</h1>
+        <p>Masz pytania o zajęcia lub zapisy? Napisz przez formularz, zadzwoń, napisz na Messengerze albo odwiedź nas osobiście.</p>
+      </div>
+    </section>
+
+    <!-- ================= FORMULARZ + DANE KONTAKTOWE ================= -->
+    <section class="contact-page-form-section">
+      <div class="container contact-page-grid">
+        <div class="contact-form-card reveal">
+          <h2>Napisz do nas</h2>
+
+          <form id="contact-form" novalidate>
+            <div class="form-field">
+              <label for="contact-name">Imię i nazwisko</label>
+              <input type="text" id="contact-name" name="name" required>
+              <span class="field-error"></span>
+            </div>
+
+            <div class="form-field">
+              <label for="contact-contact">Kontakt (e-mail lub telefon)</label>
+              <input type="text" id="contact-contact" name="contact" required>
+              <span class="field-error"></span>
+            </div>
+
+            <div class="form-field">
+              <label for="contact-message">Wiadomość</label>
+              <textarea id="contact-message" name="message" rows="5" required></textarea>
+              <span class="field-error"></span>
+            </div>
+
+            <div class="form-error" id="contact-form-error" role="alert" hidden></div>
+
+            <button type="submit" class="btn btn-primary btn-block" id="contact-form-submit">Wyślij wiadomość</button>
+          </form>
+
+          <div class="form-success" id="contact-form-success" hidden>
+            ✅ Dziękujemy za wiadomość! Odpowiemy najszybciej, jak to możliwe.
+          </div>
+        </div>
+
+        <div class="contact-page-info reveal">
+          <div class="contact-info-list">
+            <div class="contact-item">
+              <span class="contact-icon" aria-hidden="true">📍</span>
+              <strong>Adres</strong>
+              <p>ul. Zamkowa 39<br>95-200 Pabianice</p>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon" aria-hidden="true">📞</span>
+              <strong>Telefon</strong>
+              <p><a href="tel:+48000000000">+48 000 000 000</a></p>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon" aria-hidden="true">✉️</span>
+              <strong>E-mail</strong>
+              <p><a href="mailto:kontakt@edukacyjnaprzystan.pl">kontakt@edukacyjnaprzystan.pl</a></p>
+            </div>
+          </div>
+
+          <a class="btn btn-messenger btn-block" id="messenger-link" href="#" target="_blank" rel="noopener">
+            💬 Napisz na Messengerze
+          </a>
+          <p class="contact-messenger-note">Odpowiadamy zwykle w ciągu kilku godzin w dni robocze.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= MAPA ================= -->
+    <section class="contact-map-section">
+      <div class="container">
+        <div class="contact-map">
+          <iframe
+            src="https://maps.google.com/maps?q=Zamkowa%2039%2C%2095-200%20Pabianice%2C%20Polska&t=&z=16&ie=UTF8&iwloc=&output=embed"
+            title="Mapa dojazdu do Edukacyjnej Przystani"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a class="logo" href="index.html">
+            <span class="logo-badge" aria-hidden="true">EP</span>
+            <span class="logo-text">Edukacyjna Przystań</span>
+          </a>
+          <p style="color:#B7B9C2; margin-top: var(--space-3);">
+            Zajęcia pozalekcyjne dla dzieci i młodzieży.
+          </p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook">📘</a>
+            <a href="#" aria-label="Instagram">📷</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Nawigacja</h4>
+          <a href="index.html#start">Start</a>
+          <a href="index.html#zajecia">Zajęcia</a>
+          <a href="kursy.html">Wszystkie kursy</a>
+          <a href="misja.html">Misja</a>
+          <a href="index.html#o-nas">O nas</a>
+          <a href="index.html#dlaczego-warto">Dlaczego my</a>
+          <a href="index.html#opinie">Opinie</a>
+        </div>
+        <div class="footer-col">
+          <h4>Wsparcie</h4>
+          <a href="index.html#faq">FAQ</a>
+          <a href="kontakt.html">Kontakt</a>
+        </div>
+        <div class="footer-col">
+          <h4>Kontakt</h4>
+          <a href="tel:+48000000000">+48 000 000 000</a>
+          <a href="mailto:kontakt@edukacyjnaprzystan.pl">kontakt@edukacyjnaprzystan.pl</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; <span id="footer-year">2026</span> Edukacyjna Przystań. Wszelkie prawa zastrzeżone.
+      </div>
+    </div>
+  </footer>
+
+  <button id="fab-contact" class="fab" aria-label="Szybki kontakt telefoniczny">📞</button>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
+  <script src="js/config.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/nav.js" defer></script>
+  <script src="js/reveal.js" defer></script>
+  <script src="js/render.js" defer></script>
+  <script src="js/accordion.js" defer></script>
+  <script src="js/modal.js" defer></script>
+  <script src="js/form.js" defer></script>
+  <script src="js/contact-form.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>

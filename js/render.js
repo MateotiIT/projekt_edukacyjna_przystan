@@ -1,9 +1,11 @@
-function createCourseCard(course) {
+function createCourseCard(course, options = {}) {
+  const { showAgeGroup = false, detailBasePath = "kursy/" } = options;
+
   const card = document.createElement("article");
   card.className = "course-card reveal";
 
-  const scheduleList = course.schedule && course.schedule.length
-    ? `<ul class="course-schedule">${course.schedule.map((slot) => `<li>${slot}</li>`).join("")}</ul>`
+  const ageBadge = showAgeGroup && course.ageGroup
+    ? `<span class="course-age-badge">${course.ageGroup}</span>`
     : "";
 
   card.innerHTML = `
@@ -11,13 +13,18 @@ function createCourseCard(course) {
       <img src="${course.image}" alt="${course.title}" width="600" height="450" loading="lazy">
     </div>
     <div class="course-card-body">
+      ${ageBadge}
       <h4>${course.title}</h4>
       <p>${course.description}</p>
-      ${scheduleList}
-      <button type="button" class="btn btn-primary btn-block js-signup-trigger"
-        data-course-id="${course.id}" data-course-title="${course.title}">
-        Zapisz się
-      </button>
+      <div class="course-card-actions">
+        <button type="button" class="btn btn-primary btn-block js-signup-trigger"
+          data-course-id="${course.id}" data-course-title="${course.title}">
+          Zapisz się
+        </button>
+        <a href="${detailBasePath}${course.id}.html" class="btn btn-secondary btn-block">
+          Wyświetl szczegóły
+        </a>
+      </div>
     </div>
   `;
 
@@ -29,22 +36,45 @@ function renderCourses() {
   const gridLiceum = document.getElementById("course-grid-liceum");
   if (!gridPodstawowa || !gridLiceum) return;
 
+  const showAgeGroup = gridPodstawowa.dataset.showAgeGroup === "true";
+
   COURSES.filter((c) => c.track === "podstawowa").forEach((course) => {
-    gridPodstawowa.appendChild(createCourseCard(course));
+    gridPodstawowa.appendChild(createCourseCard(course, { showAgeGroup }));
   });
 
   COURSES.filter((c) => c.track === "liceum").forEach((course) => {
-    gridLiceum.appendChild(createCourseCard(course));
+    gridLiceum.appendChild(createCourseCard(course, { showAgeGroup }));
   });
+}
 
-  // Otwarcie modala zapisu przez zdarzenie niestandardowe - oddziela render.js od modal.js
-  document.querySelectorAll(".js-signup-trigger").forEach((button) => {
-    button.addEventListener("click", () => {
+// Karty "może Cię zainteresować" na podstronach kursów - inne zajęcia z tej samej kategorii.
+function renderRelatedCourses() {
+  const grid = document.getElementById("related-courses-grid");
+  if (!grid) return;
+
+  const currentId = grid.dataset.currentCourseId;
+  const track = grid.dataset.track;
+
+  COURSES.filter((c) => c.track === track && c.id !== currentId)
+    .slice(0, 3)
+    .forEach((course) => {
+      grid.appendChild(createCourseCard(course, { showAgeGroup: true, detailBasePath: "" }));
+    });
+}
+
+// Otwarcie modala zapisu przez zdarzenie niestandardowe - oddziela ten kod od modal.js.
+// Działa zarówno na kartach generowanych przez JS, jak i na statycznych przyciskach (np. na podstronach kursów).
+function initSignupTriggers() {
+  document.querySelectorAll(".js-signup-trigger").forEach((trigger) => {
+    trigger.addEventListener("click", (event) => {
+      event.preventDefault();
+      const course = COURSES.find((c) => c.id === trigger.dataset.courseId);
       document.dispatchEvent(
         new CustomEvent("open-signup-modal", {
           detail: {
-            id: button.dataset.courseId,
-            title: button.dataset.courseTitle,
+            id: trigger.dataset.courseId,
+            title: trigger.dataset.courseTitle,
+            schedule: course ? course.schedule : [],
           },
         })
       );

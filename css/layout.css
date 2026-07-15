@@ -285,6 +285,52 @@ a.nav-cta-mobile {
   margin-bottom: var(--space-2);
 }
 
+/* ---------- Why us (Dlaczego warto) ---------- */
+.why-grid {
+  display: grid;
+  gap: var(--space-5);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .why-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.why-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6) var(--space-5);
+}
+
+.why-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-primary-light);
+  font-size: 1.5rem;
+  margin-bottom: var(--space-4);
+}
+
+.why-card h4 {
+  margin-bottom: var(--space-2);
+}
+
+.why-card p {
+  margin: 0;
+}
+
 /* ---------- Courses ---------- */
 .courses-track {
   margin-bottom: var(--space-9);
@@ -462,4 +508,329 @@ a.nav-cta-mobile {
   font-size: var(--fs-small);
   text-align: center;
   color: #8C8FA0;
+}
+
+/* ---------- Course detail page ---------- */
+.course-detail-breadcrumb {
+  padding-top: var(--space-6);
+  padding-bottom: 0;
+}
+
+.course-detail-breadcrumb a {
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.course-detail-layout {
+  display: grid;
+  gap: var(--space-7);
+  align-items: start;
+  padding-block: var(--space-5) var(--space-9);
+}
+
+/* .course-detail-header/.course-detail-block are <section> elements nested inside
+   the two-column layout, so the global `section { padding-block }` rule needs
+   resetting here - otherwise it stacks with .course-detail-block's margin-top
+   and blows up the gaps between these sub-sections. */
+.course-detail-header,
+.course-detail-block {
+  padding-block: 0;
+}
+
+.course-detail-header .course-age-badge {
+  margin-bottom: var(--space-3);
+}
+
+.course-detail-lead {
+  font-size: var(--fs-lead);
+}
+
+.course-detail-facts {
+  display: grid;
+  gap: var(--space-3);
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  margin: var(--space-5) 0 0;
+}
+
+.course-detail-media {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-top: var(--space-5);
+  aspect-ratio: 16 / 9;
+}
+
+.course-detail-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.course-detail-block {
+  margin-top: var(--space-8);
+}
+
+.check-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.check-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  color: var(--color-ink);
+}
+
+.check-list li::before {
+  content: "✓";
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.course-detail-sidebar {
+  display: none;
+}
+
+.course-detail-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.course-detail-card img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.course-detail-card-body {
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.course-detail-card-note {
+  margin: 0;
+  font-size: var(--fs-small);
+  color: var(--color-ink-muted);
+  text-align: center;
+}
+
+.course-sticky-cta {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 400;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-3) var(--space-5);
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  box-shadow: var(--shadow-lg);
+}
+
+.course-sticky-cta-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.course-sticky-cta-info strong {
+  font-family: var(--font-heading);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.course-sticky-cta-info span {
+  font-size: var(--fs-small);
+  color: var(--color-ink-muted);
+}
+
+.course-sticky-cta .btn {
+  flex-shrink: 0;
+}
+
+body.has-sticky-cta {
+  padding-bottom: 76px;
+}
+
+@media (min-width: 1024px) {
+  .course-detail-layout {
+    grid-template-columns: 1.6fr 1fr;
+  }
+
+  .course-detail-sidebar {
+    display: block;
+    position: sticky;
+    top: calc(72px + var(--space-5));
+  }
+
+  .course-sticky-cta {
+    display: none;
+  }
+
+  body.has-sticky-cta {
+    padding-bottom: 0;
+  }
+}
+
+/* ---------- Misja ---------- */
+/* .mission-hero/.mission-values are adjacent top-level sections, so the global
+   `section { padding-block }` stacks on both sides of the seam (96px + 96px) -
+   tighten it here so the gap between them isn't huge. */
+.mission-hero {
+  padding-bottom: var(--space-6);
+}
+
+.mission-values {
+  padding-top: var(--space-6);
+}
+
+.mission-hero-grid {
+  display: grid;
+  gap: var(--space-8);
+  align-items: center;
+}
+
+.mission-hero-copy .hero-actions {
+  justify-content: flex-start;
+}
+
+.image-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  aspect-ratio: 4 / 3;
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  color: var(--color-ink-muted);
+  text-align: center;
+  padding: var(--space-6);
+}
+
+.image-placeholder-icon {
+  font-size: 2.5rem;
+}
+
+.mission-cta {
+  background: var(--color-surface-alt);
+}
+
+.mission-cta .btn {
+  margin-top: var(--space-5);
+}
+
+.mission-values .why-grid {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .mission-hero-grid {
+    grid-template-columns: 1.05fr 0.95fr;
+  }
+
+  .mission-values .why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ---------- Kontakt (podstrona) ---------- */
+/* .contact-page/.contact-page-form-section are adjacent top-level sections, so the
+   global `section { padding-block }` stacks on both sides of the seam - tighten it
+   here (same fix as .mission-hero/.mission-values). */
+.contact-page {
+  padding-top: var(--space-6);
+  padding-bottom: var(--space-6);
+}
+
+.contact-page-form-section {
+  padding-top: var(--space-6);
+}
+
+.contact-page-grid {
+  display: grid;
+  gap: var(--space-7);
+  align-items: start;
+}
+
+.contact-form-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+}
+
+.contact-form-card h2 {
+  margin-bottom: var(--space-5);
+}
+
+.contact-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+
+.contact-info-list .contact-item {
+  text-align: left;
+}
+
+.contact-messenger-note {
+  font-size: var(--fs-small);
+  color: var(--color-ink-muted);
+  margin-top: var(--space-3);
+}
+
+.btn-messenger {
+  background: #0084FF;
+  color: #fff;
+}
+
+.btn-messenger:hover {
+  background: #006FD6;
+}
+
+.contact-map-section {
+  padding-top: 0;
+}
+
+.contact-map {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  aspect-ratio: 16 / 7;
+}
+
+.contact-map iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+@media (min-width: 900px) {
+  .contact-page-grid {
+    grid-template-columns: 1.15fr 0.85fr;
+  }
 }

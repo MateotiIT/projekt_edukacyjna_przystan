@@ -1,4 +1,5 @@
 const CONTACT_REGEX = /^(\+?\d[\d\s-]{8,}|[^\s@]+@[^\s@]+\.[^\s@]+)$/;
+const PHONE_REGEX = /^\+?\d[\d\s-]{8,}$/;
 
 function setFieldError(fieldId, message) {
   const field = document.getElementById(fieldId);
@@ -14,8 +15,9 @@ function validateForm(form) {
   let valid = true;
 
   const childName = form.child_name.value.trim();
-  const childAge = Number(form.child_age.value);
+  const childClass = form.child_class.value;
   const parentName = form.parent_name.value.trim();
+  const parentPhone = form.parent_phone.value.trim();
   const parentContact = form.parent_contact.value.trim();
 
   if (!childName) {
@@ -25,11 +27,21 @@ function validateForm(form) {
     setFieldError("child-name", "");
   }
 
-  if (!form.child_age.value || Number.isNaN(childAge) || childAge < 4 || childAge > 19) {
-    setFieldError("child-age", "Podaj wiek dziecka (4-19 lat).");
+  if (!childClass) {
+    setFieldError("child-class", "Wybierz klasę dziecka.");
     valid = false;
   } else {
-    setFieldError("child-age", "");
+    setFieldError("child-class", "");
+  }
+
+  const hasScheduleOptions = document.querySelectorAll(
+    '#modal-course-schedule input[name="selected_term"]'
+  ).length > 0;
+  if (hasScheduleOptions && !form.selected_term.value) {
+    setFieldError("schedule-field", "Wybierz jeden z dostępnych terminów.");
+    valid = false;
+  } else {
+    setFieldError("schedule-field", "");
   }
 
   if (!parentName) {
@@ -39,11 +51,25 @@ function validateForm(form) {
     setFieldError("parent-name", "");
   }
 
+  if (!parentPhone || !PHONE_REGEX.test(parentPhone)) {
+    setFieldError("parent-phone", "Podaj poprawny numer telefonu.");
+    valid = false;
+  } else {
+    setFieldError("parent-phone", "");
+  }
+
   if (!parentContact || !CONTACT_REGEX.test(parentContact)) {
     setFieldError("parent-contact", "Podaj poprawny e-mail lub numer telefonu.");
     valid = false;
   } else {
     setFieldError("parent-contact", "");
+  }
+
+  if (!form.terms_accept.checked) {
+    setFieldError("terms-accept", "Musisz zaakceptować regulamin, aby wysłać zgłoszenie.");
+    valid = false;
+  } else {
+    setFieldError("terms-accept", "");
   }
 
   return valid;
@@ -89,7 +115,7 @@ function resetFormState() {
   if (form) {
     form.reset();
     form.hidden = false;
-    ["child-name", "child-age", "parent-name", "parent-contact"].forEach((id) =>
+    ["child-name", "child-class", "schedule-field", "parent-name", "parent-phone", "parent-contact", "terms-accept"].forEach((id) =>
       setFieldError(id, "")
     );
   }
@@ -106,13 +132,18 @@ function handleSubmit(event) {
 
   setFormState("sending");
 
+  const childClassOption = CHILD_CLASS_OPTIONS.find((option) => option.value === form.child_class.value);
+
   const templateParams = {
     course_title: document.getElementById("modal-course-name").textContent,
     course_id: form.course_id.value,
     child_name: form.child_name.value.trim(),
-    child_age: form.child_age.value,
+    child_class: childClassOption ? childClassOption.label : form.child_class.value,
+    selected_term: form.selected_term ? form.selected_term.value : "",
     parent_name: form.parent_name.value.trim(),
+    parent_phone: form.parent_phone.value.trim(),
     parent_contact: form.parent_contact.value.trim(),
+    terms_accepted: form.terms_accept.checked ? "tak" : "nie",
   };
 
   if (typeof emailjs === "undefined") {

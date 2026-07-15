@@ -93,6 +93,24 @@
   flex-grow: 1;
 }
 
+.course-card-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.course-age-badge {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: var(--fs-small);
+  font-weight: 700;
+  color: var(--color-coral-dark);
+  background: var(--color-coral-light);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+  margin-bottom: var(--space-3);
+}
+
 .course-schedule {
   list-style: none;
   display: flex;
@@ -102,13 +120,39 @@
   padding: 0;
 }
 
-.course-schedule li {
+.schedule-pill {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--color-primary);
+  background: var(--color-primary-light);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-pill);
+}
+
+.schedule-option {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
   font-size: var(--fs-small);
   font-weight: 600;
   color: var(--color-primary);
   background: var(--color-primary-light);
   padding: var(--space-1) var(--space-3);
   border-radius: var(--radius-pill);
+  border: 1.5px solid transparent;
+  cursor: pointer;
+}
+
+.schedule-option input[type="radio"] {
+  accent-color: var(--color-primary);
+  margin: 0;
+}
+
+.schedule-option:has(input:checked) {
+  border-color: var(--color-primary);
+  background: var(--color-primary-light);
 }
 
 .testimonial-card {
@@ -309,20 +353,83 @@
   color: var(--color-ink);
 }
 
-.form-field input {
+.form-field input,
+.form-field select,
+.form-field textarea {
   padding: var(--space-3) var(--space-4);
   border: 1.5px solid var(--color-border);
   border-radius: var(--radius-sm);
   background: var(--color-bg);
   color: var(--color-ink);
+  font-family: inherit;
+  font-size: var(--fs-body);
 }
 
-.form-field input:focus {
+.form-field textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
   border-color: var(--color-primary);
 }
 
-.form-field.has-error input {
+.checkbox-field {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.checkbox-field input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  flex-shrink: 0;
+  accent-color: var(--color-primary);
+}
+
+.checkbox-field label {
+  flex: 1;
+  min-width: 0;
+  font-weight: 400;
+  font-size: var(--fs-small);
+  color: var(--color-ink-muted);
+  cursor: pointer;
+}
+
+.checkbox-field a {
+  color: var(--color-primary);
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.checkbox-field .field-error {
+  flex-basis: 100%;
+}
+
+.form-field.has-error input,
+.form-field.has-error select,
+.form-field.has-error textarea {
   border-color: var(--color-error);
+}
+
+.form-field-label {
+  font-weight: 700;
+  font-size: var(--fs-small);
+  color: var(--color-ink);
+}
+
+.schedule-hint {
+  margin: 0;
+  font-size: var(--fs-small);
+  color: var(--color-ink-muted);
+}
+
+#schedule-field .course-schedule:empty {
+  display: none;
 }
 
 .field-error {
