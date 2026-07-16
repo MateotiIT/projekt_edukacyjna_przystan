@@ -323,7 +323,7 @@ a.nav-cta-mobile {
   margin-bottom: var(--space-4);
 }
 
-.why-card h4 {
+.why-card h3 {
   margin-bottom: var(--space-2);
 }
 
@@ -354,14 +354,14 @@ a.nav-cta-mobile {
 .track-heading .track-tag {
   font-size: var(--fs-small);
   font-weight: 700;
-  color: var(--color-primary);
+  color: var(--color-primary-dark);
   background: var(--color-primary-light);
   padding: var(--space-1) var(--space-3);
   border-radius: var(--radius-pill);
 }
 
 .track-heading .track-tag-soon {
-  color: var(--color-coral-dark);
+  color: var(--color-coral-text);
   background: var(--color-coral-light);
 }
 
@@ -471,9 +471,10 @@ a.nav-cta-mobile {
   color: #fff;
 }
 
-.footer-col h4 {
+.footer-col h3 {
   color: #fff;
   margin-bottom: var(--space-3);
+  font-size: var(--fs-h4);
 }
 
 .footer-col a {

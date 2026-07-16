@@ -1,5 +1,5 @@
 function createCourseCard(course, options = {}) {
-  const { showAgeGroup = false, detailBasePath = "kursy/" } = options;
+  const { showAgeGroup = false, detailBasePath = "kursy/", headingLevel = "h4" } = options;
 
   const card = document.createElement("article");
   card.className = "course-card reveal";
@@ -14,7 +14,7 @@ function createCourseCard(course, options = {}) {
     </div>
     <div class="course-card-body">
       ${ageBadge}
-      <h4>${course.title}</h4>
+      <${headingLevel}>${course.title}</${headingLevel}>
       <p>${course.description}</p>
       <div class="course-card-actions">
         <button type="button" class="btn btn-primary btn-block js-signup-trigger"
@@ -58,7 +58,7 @@ function renderRelatedCourses() {
   COURSES.filter((c) => c.track === track && c.id !== currentId)
     .slice(0, 3)
     .forEach((course) => {
-      grid.appendChild(createCourseCard(course, { showAgeGroup: true, detailBasePath: "" }));
+      grid.appendChild(createCourseCard(course, { showAgeGroup: true, detailBasePath: "", headingLevel: "h3" }));
     });
 }
 
