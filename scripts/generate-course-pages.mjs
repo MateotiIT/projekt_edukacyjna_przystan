@@ -58,6 +58,7 @@ function page(course) {
   const title = esc(course.title);
   const desc = esc(course.description);
   const age = esc(course.ageGroup);
+  const imageAlt = esc(course.imageAlt || course.title);
   const metaDescription = esc(
     `${course.title} w Pabianicach - zajęcia pozalekcyjne dla grupy wiekowej ${course.ageGroup}. ${course.description}`
   );
@@ -176,7 +177,7 @@ ${courseJsonLd}
           </div>
 
           <div class="course-detail-media">
-            <img src="${course.image}" alt="${title}" width="800" height="450" loading="eager">
+            <img src="${course.image}" alt="${imageAlt}" width="800" height="450" loading="eager">
           </div>
         </section>
 

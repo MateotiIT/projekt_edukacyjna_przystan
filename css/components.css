@@ -20,7 +20,7 @@
 
 .btn-primary {
   background: var(--color-coral);
-  color: var(--color-ink);
+  color: #fff;
   box-shadow: var(--shadow-sm);
 }
 
@@ -112,6 +112,8 @@
   padding: var(--space-1) var(--space-3);
   border-radius: var(--radius-pill);
   margin-bottom: var(--space-3);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .course-schedule {

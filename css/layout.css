@@ -96,14 +96,14 @@
   display: flex;
 }
 
-.nav-menu a {
+.nav-menu a:not(.btn) {
   display: block;
   padding: var(--space-2) 0;
   font-weight: 600;
   color: var(--color-ink);
 }
 
-.nav-menu a:hover {
+.nav-menu a:not(.btn):hover {
   color: var(--color-primary);
 }
 
@@ -372,6 +372,7 @@ a.nav-cta-mobile {
 
 .track-heading {
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
   gap: var(--space-3);
   margin-bottom: var(--space-6);
@@ -388,6 +389,8 @@ a.nav-cta-mobile {
   background: var(--color-primary-light);
   padding: var(--space-1) var(--space-3);
   border-radius: var(--radius-pill);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .track-heading .track-tag-soon {
@@ -409,6 +412,12 @@ a.nav-cta-mobile {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: var(--space-5);
+}
+
+.courses-see-all {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-6);
 }
 
 /* ---------- Process (Jak to dziala) ---------- */

@@ -25,6 +25,7 @@ const COURSES = [
     description: "Pomagamy przedszkolakom pokochać czytanie - w małych grupach, we własnym tempie, bez presji i porównywania z innymi dziećmi.",
     ageGroup: "5-6 lat",
     image: "/assets/images/nauka-czytania.webp",
+    imageAlt: "Chłopiec wskazujący litery w kolorowej książeczce podczas zajęć nauki czytania",
     forWhom: [
       "Przedszkolaków w wieku 5-6 lat, którzy dopiero zaczynają przygodę z literami",
       "Dzieci, które potrzebują więcej czasu i cierpliwości w nauce czytania",
@@ -51,6 +52,7 @@ const COURSES = [
     description: "Bezpieczne i świadome wprowadzenie w świat sztucznej inteligencji - dzieci uczą się korzystać z AI z ciekawością, a nie obawą.",
     ageGroup: "5-14 lat",
     image: "/assets/images/gemini-ai.webp",
+    imageAlt: "Dziewczynka z tabletem podczas zajęć z Gemini AI, obok nauczycielka",
     forWhom: [
       "Dzieci ciekawych nowych technologii, w wieku od przedszkola po klasę 8",
       "Uczniów, którzy chcą oswoić się ze sztuczną inteligencją w bezpieczny, kontrolowany sposób",
@@ -79,6 +81,7 @@ const COURSES = [
     description: "Nauka języka niemieckiego w małych grupach dopasowanych do wieku i poziomu - od zerówki po klasę 8, z możliwością zajęć indywidualnych.",
     ageGroup: "6-14 lat",
     image: "/assets/images/niemiecki-sp.webp",
+    imageAlt: "Dziewczynka i chłopiec rozmawiający przy fiszkach podczas zajęć z języka niemieckiego",
     forWhom: [
       "Uczniów od zerówki po klasę 8, w grupach dopasowanych do wieku i poziomu",
       "Dzieci zaczynających naukę niemieckiego od podstaw oraz te, które chcą go rozwijać",
@@ -109,6 +112,7 @@ const COURSES = [
     description: "Dodatkowe wsparcie z języka polskiego dla uczniów klas 1-3 - nadrabiamy zaległości i budujemy pewność siebie w czytaniu i pisaniu.",
     ageGroup: "7-9 lat",
     image: "/assets/images/wyrownawcze-polski.webp",
+    imageAlt: "Chłopiec piszący w zeszycie podczas zajęć wyrównawczych z języka polskiego",
     forWhom: [
       "Uczniów klas 1-3, którzy potrzebują dodatkowego wsparcia z języka polskiego",
       "Dzieci chcące nadrobić zaległości lub utrwalić materiał ze szkoły",
@@ -136,6 +140,7 @@ const COURSES = [
     description: "Zajęcia wyrównawcze i rozwijające zainteresowania matematyczne dla uczniów klas 1-3 - bez stresu i presji.",
     ageGroup: "7-9 lat",
     image: "/assets/images/wyrownawcze-matematyka.webp",
+    imageAlt: "Dziewczynka układająca kolorowe klocki do liczenia podczas zajęć wyrównawczych z matematyki",
     forWhom: [
       "Uczniów klas 1-3 potrzebujących wsparcia z matematyki",
       "Dzieci, które chcą rozwijać zainteresowania matematyczne bez presji i stresu",
@@ -163,6 +168,7 @@ const COURSES = [
     description: "Dzieci uczą się współpracy, empatii i radzenia sobie z emocjami w grupie rówieśniczej - w praktyce, poprzez zabawę i wspólne ćwiczenia.",
     ageGroup: "5-14 lat",
     image: "/assets/images/tus.webp",
+    imageAlt: "Grupa dzieci siedzących w kole podczas zajęć TUS - treningu umiejętności społecznych",
     forWhom: [
       "Dzieci w wieku 5-14 lat, które chcą rozwijać kompetencje społeczne",
       "Uczniów potrzebujących wsparcia w budowaniu relacji z rówieśnikami",
@@ -188,6 +194,7 @@ const COURSES = [
     description: "Nauka matematyki połączona z pierwszymi krokami w programowaniu - od przedszkola po klasę 3.",
     ageGroup: "5-9 lat",
     image: "/assets/images/matematyka-programowanie.webp",
+    imageAlt: "Chłopiec bawiący się kolorową zabawką do nauki podstaw programowania",
     forWhom: [
       "Przedszkolaków w wieku 5-6 lat ciekawych matematyki i technologii",
       "Uczniów klas 1-3, którzy chcą rozwijać umiejętności matematyczne i pierwsze kroki w programowaniu",
@@ -214,6 +221,7 @@ const COURSES = [
     description: "Indywidualne spotkania z psychologiem w bezpiecznej, przyjaznej atmosferze - wsparcie dopasowane do potrzeb dziecka lub nastolatka, po wcześniejszym umówieniu terminu.",
     ageGroup: "5-14 lat",
     image: "/assets/images/terapia-psychologiczna.webp",
+    imageAlt: "Przytulny kącik gabinetu do terapii psychologicznej z fotelem i pluszową zabawką",
     forWhom: [
       "Dzieci i młodzieży potrzebujących indywidualnego wsparcia psychologicznego",
       "Rodzin szukających profesjonalnej pomocy w rozwoju emocjonalnym dziecka",
@@ -237,6 +245,7 @@ const COURSES = [
     description: "Wsparcie terapeutyczne dla całej rodziny w trudnych momentach - pomagamy odbudować komunikację i wzajemne zrozumienie, po wcześniejszym umówieniu terminu.",
     ageGroup: "Cała rodzina",
     image: "/assets/images/terapia-rodzinna.webp",
+    imageAlt: "Tata i córka siedzący razem na kanapie podczas zajęć terapii rodzinnej",
     forWhom: [
       "Rodzin szukających wsparcia w rozwiązywaniu trudności i konfliktów",
       "Rodziców i dzieci, którzy chcą poprawić wzajemną komunikację",

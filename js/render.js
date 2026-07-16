@@ -10,7 +10,7 @@ function createCourseCard(course, options = {}) {
 
   card.innerHTML = `
     <div class="course-card-media">
-      <img src="${course.image}" alt="${course.title}" width="600" height="450" loading="lazy">
+      <img src="${course.image}" alt="${course.imageAlt || course.title}" width="600" height="450" loading="lazy">
     </div>
     <div class="course-card-body">
       ${ageBadge}
@@ -37,10 +37,21 @@ function renderCourses() {
   if (!gridPodstawowa || !gridLiceum) return;
 
   const showAgeGroup = gridPodstawowa.dataset.showAgeGroup === "true";
+  const limit = gridPodstawowa.dataset.limit ? Number(gridPodstawowa.dataset.limit) : null;
 
-  COURSES.filter((c) => c.track === "podstawowa").forEach((course) => {
+  const podstawowaCourses = COURSES.filter((c) => c.track === "podstawowa");
+  const podstawowaToShow = limit ? podstawowaCourses.slice(0, limit) : podstawowaCourses;
+
+  podstawowaToShow.forEach((course) => {
     gridPodstawowa.appendChild(createCourseCard(course, { showAgeGroup }));
   });
+
+  if (limit && podstawowaCourses.length > limit) {
+    const seeAll = document.createElement("div");
+    seeAll.className = "courses-see-all";
+    seeAll.innerHTML = `<a class="btn btn-secondary" href="kursy.html">Wszystkie zajęcia</a>`;
+    gridPodstawowa.insertAdjacentElement("afterend", seeAll);
+  }
 
   COURSES.filter((c) => c.track === "liceum").forEach((course) => {
     gridLiceum.appendChild(createCourseCard(course, { showAgeGroup }));
