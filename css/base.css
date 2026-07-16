@@ -46,6 +46,7 @@ h1, h2, h3, h4 {
   line-height: 1.2;
   margin: 0 0 var(--space-4);
   color: var(--color-ink);
+  overflow-wrap: break-word;
 }
 
 h1 { font-size: var(--fs-h1); font-weight: 800; }

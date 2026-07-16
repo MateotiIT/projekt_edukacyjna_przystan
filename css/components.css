@@ -41,6 +41,7 @@
 
 .btn-block {
   width: 100%;
+  white-space: normal;
 }
 
 .btn:disabled {

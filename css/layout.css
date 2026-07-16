@@ -332,6 +332,21 @@ a.nav-cta-mobile {
 }
 
 /* ---------- Courses ---------- */
+/* .courses-intro/.courses and .courses-contact-cta/footer (on kursy.html) are
+   adjacent top-level sections, so the global `section { padding-block }` stacks
+   on both sides of each seam - tighten it here (same fix as .mission-hero/.mission-values). */
+.courses-intro {
+  padding-bottom: var(--space-6);
+}
+
+.courses-intro + .courses {
+  padding-top: var(--space-6);
+}
+
+.courses-contact-cta {
+  padding-bottom: var(--space-6);
+}
+
 .courses-track {
   margin-bottom: var(--space-9);
 }
@@ -524,6 +539,7 @@ a.nav-cta-mobile {
 
 .course-detail-layout {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--space-7);
   align-items: start;
   padding-block: var(--space-5) var(--space-9);
@@ -736,6 +752,7 @@ body.has-sticky-cta {
 
 .mission-cta {
   background: var(--color-surface-alt);
+  padding-bottom: var(--space-6);
 }
 
 .mission-cta .btn {
@@ -771,6 +788,7 @@ body.has-sticky-cta {
 
 .contact-page-grid {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--space-7);
   align-items: start;
 }
