@@ -22,7 +22,7 @@ const COURSES = [
     id: "nauka-czytania",
     track: "podstawowa",
     title: "Nauka czytania",
-    description: "Wsparcie w nauce czytania dla przedszkolaków, w małych grupach i przyjaznej, cierpliwej atmosferze.",
+    description: "Pomagamy przedszkolakom pokochać czytanie - w małych grupach, we własnym tempie, bez presji i porównywania z innymi dziećmi.",
     ageGroup: "5-6 lat",
     image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&h=450&q=80",
     forWhom: [
@@ -37,18 +37,18 @@ const COURSES = [
     faq: [
       { question: "Czy moje dziecko musi już znać litery?", answer: "Nie, zajęcia są dopasowane do punktu startowego każdego dziecka - zaczynamy od podstaw, w tempie dopasowanym do przedszkolaka." },
       { question: "Ile trwają pojedyncze zajęcia?", answer: "Spotkania trwają 50-60 minut, w zależności od grupy wiekowej." },
-      { question: "Co zabrać na pierwsze zajęcia?", answer: "Wystarczy dobry humor i chęć do nauki - resztę materiałów zapewniamy na miejscu." },
+      { question: "Co zabrać na pierwsze zajęcia?", answer: "Wystarczy dobry humor - książeczki i karty pracy przygotowujemy na miejscu." },
     ],
     schedule: [
       { time: "poniedziałek 16:40–17:40", classes: ["przedszkole-6"] },
-      { time: "środa 16:40–17:30", classes: ["przedszkole-5"] },
+      { time: "wtorek 16:00–17:00", classes: ["przedszkole-5"] },
     ],
   },
   {
     id: "gemini-ai",
     track: "podstawowa",
     title: "Zajęcia z Gemini AI",
-    description: "Pierwszy kontakt ze sztuczną inteligencją i nowymi technologiami - zajęcia grupowe i indywidualne.",
+    description: "Bezpieczne i świadome wprowadzenie w świat sztucznej inteligencji - dzieci uczą się korzystać z AI z ciekawością, a nie obawą.",
     ageGroup: "5-14 lat",
     image: "https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?auto=format&fit=crop&w=600&h=450&q=80",
     forWhom: [
@@ -63,7 +63,7 @@ const COURSES = [
     faq: [
       { question: "Czy moje dziecko musi mieć wcześniejsze doświadczenie z komputerem?", answer: "Nie, zajęcia zaczynają się od podstaw i są dostosowane do wieku uczestnika." },
       { question: "Czy to są zajęcia grupowe, czy indywidualne?", answer: "Oferujemy oba warianty - grupę w poniedziałki oraz zajęcia indywidualne w czwartki, do wyboru podczas zapisu." },
-      { question: "Co zabrać na pierwsze zajęcia?", answer: "Wystarczy dobry humor i chęć do nauki - resztę materiałów zapewniamy na miejscu." },
+      { question: "Co zabrać na pierwsze zajęcia?", answer: "Nic - sprzęt i materiały do zajęć zapewniamy na miejscu, dziecko przynosi tylko ciekawość." },
     ],
     schedule: [
       { time: "poniedziałek 15:30–16:30", note: "grupa", classes: "all" },
@@ -76,7 +76,7 @@ const COURSES = [
     id: "niemiecki-sp",
     track: "podstawowa",
     title: "Język niemiecki",
-    description: "Nauka języka niemieckiego w grupach dopasowanych do wieku i poziomu - od zerówki po klasę 8.",
+    description: "Nauka języka niemieckiego w małych grupach dopasowanych do wieku i poziomu - od zerówki po klasę 8, z możliwością zajęć indywidualnych.",
     ageGroup: "6-14 lat",
     image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=600&h=450&q=80",
     forWhom: [
@@ -91,11 +91,11 @@ const COURSES = [
     faq: [
       { question: "Jak dobierane są grupy?", answer: "Grupy są dopasowane do wieku i poziomu językowego - od grupy początkującej (zerówka i klasy 1-3) po zaawansowane klasy 7-8." },
       { question: "Co jeśli mój termin nie pasuje do żadnej z grup?", answer: "Oferujemy też zajęcia indywidualne w piątki, po wcześniejszym umówieniu terminu." },
-      { question: "Co zabrać na pierwsze zajęcia?", answer: "Wystarczy dobry humor i chęć do nauki - resztę materiałów zapewniamy na miejscu." },
+      { question: "Co zabrać na pierwsze zajęcia?", answer: "Wystarczy zeszyt i długopis - resztę materiałów do nauki zapewniamy na miejscu." },
     ],
     schedule: [
       { time: "poniedziałek 17:50–18:50", classes: ["kl7"] },
-      { time: "wtorek 17:50–18:50", classes: ["kl7"] },
+      { time: "środa 17:50–18:50", classes: ["kl7"] },
       { time: "środa 17:50–18:50", note: "grupa początkująca", classes: ["przedszkole-6", "kl1", "kl2", "kl3"] },
       { time: "czwartek 17:50–18:50", classes: ["kl8"] },
       { time: "piątek 16:40–17:40", note: "grupa początkująca", classes: ["kl4", "kl5", "kl6"] },
@@ -106,7 +106,7 @@ const COURSES = [
     id: "wyrownawcze-polski",
     track: "podstawowa",
     title: "Zajęcia wyrównawcze - język polski",
-    description: "Dodatkowe wsparcie z języka polskiego dla uczniów klas 1-3.",
+    description: "Dodatkowe wsparcie z języka polskiego dla uczniów klas 1-3 - nadrabiamy zaległości i budujemy pewność siebie w czytaniu i pisaniu.",
     ageGroup: "7-9 lat",
     image: "https://images.unsplash.com/photo-1580894732444-8ecded7900cd?auto=format&fit=crop&w=600&h=450&q=80",
     forWhom: [
@@ -124,9 +124,9 @@ const COURSES = [
       { question: "Co zabrać na pierwsze zajęcia?", answer: "Wystarczy zeszyt szkolny i chęć do nauki - resztę materiałów zapewniamy na miejscu." },
     ],
     schedule: [
-      { time: "wtorek 16:30–17:30", classes: ["kl1"] },
-      { time: "czwartek 16:40–17:40", classes: ["kl2"] },
       { time: "środa 16:40–17:40", classes: ["kl3"] },
+      { time: "środa 17:00–18:00", classes: ["kl1"] },
+      { time: "czwartek 16:00–17:00", classes: ["kl2"] },
     ],
   },
   {
@@ -147,20 +147,20 @@ const COURSES = [
     ],
     faq: [
       { question: "Czy zajęcia są tylko dla uczniów mających trudności z matematyką?", answer: "Nie, są też dla dzieci, które chcą rozwijać swoje zainteresowania matematyczne - dopasowujemy poziom indywidualnie." },
-      { question: "Jak długo trwają zajęcia?", answer: "Spotkania trwają 60 minut, raz w tygodniu." },
-      { question: "Co zabrać na pierwsze zajęcia?", answer: "Wystarczy zeszyt szkolny i chęć do nauki - resztę materiałów zapewniamy na miejscu." },
+      { question: "Jak liczna jest grupa?", answer: "Zajęcia prowadzimy w kameralnych grupach dopasowanych do klasy, dzięki czemu każde dziecko ma czas na zadawanie pytań." },
+      { question: "Co zabrać na pierwsze zajęcia?", answer: "Wystarczy piórnik i zeszyt - resztę pomocy naukowych zapewniamy na miejscu." },
     ],
     schedule: [
-      { time: "czwartek 16:40–17:40", classes: ["kl1"] },
-      { time: "środa 17:40–18:40", classes: ["kl2"] },
       { time: "wtorek 16:40–17:40", classes: ["kl3"] },
+      { time: "czwartek 16:40–17:40", classes: ["kl1"] },
+      { time: "piątek 17:00–18:00", classes: ["kl2"] },
     ],
   },
   {
     id: "tus",
     track: "podstawowa",
     title: "TUS - trening umiejętności społecznych",
-    description: "Zajęcia rozwijające kompetencje społeczne i emocjonalne dzieci, w małych grupach.",
+    description: "Dzieci uczą się współpracy, empatii i radzenia sobie z emocjami w grupie rówieśniczej - w praktyce, poprzez zabawę i wspólne ćwiczenia.",
     ageGroup: "5-14 lat",
     image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=600&h=450&q=80",
     forWhom: [
@@ -178,20 +178,19 @@ const COURSES = [
       { question: "Co zabrać na pierwsze zajęcia?", answer: "Wystarczy dobry humor i otwartość na nowe znajomości - resztę materiałów zapewniamy na miejscu." },
     ],
     schedule: [
-      { time: "wtorek 17:40–18:40", classes: "all" },
-      { time: "czwartek 17:50–18:50", classes: "all" },
+      { time: "wtorek 17:30–18:30", classes: "all" },
     ],
   },
   {
     id: "matematyka-programowanie",
     track: "podstawowa",
     title: "Zajęcia matematyczne z elementami programowania",
-    description: "Nauka matematyki połączona z pierwszymi krokami w programowaniu dla przedszkolaków.",
-    ageGroup: "5-6 lat",
+    description: "Nauka matematyki połączona z pierwszymi krokami w programowaniu - od przedszkola po klasę 3.",
+    ageGroup: "5-9 lat",
     image: "https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?auto=format&fit=crop&w=600&h=450&q=80",
     forWhom: [
       "Przedszkolaków w wieku 5-6 lat ciekawych matematyki i technologii",
-      "Dzieci stawiających pierwsze kroki w logicznym myśleniu",
+      "Uczniów klas 1-3, którzy chcą rozwijać umiejętności matematyczne i pierwsze kroki w programowaniu",
     ],
     whatTheyLearn: [
       "Podstawy liczenia i logicznego myślenia",
@@ -203,13 +202,16 @@ const COURSES = [
       { question: "Czy używacie komputerów?", answer: "Tak, w przystępnej, dopasowanej do wieku formie - pierwsze kroki w programowaniu wprowadzamy stopniowo, poprzez zabawę." },
       { question: "Co zabrać na pierwsze zajęcia?", answer: "Wystarczy dobry humor i ciekawość - resztę materiałów zapewniamy na miejscu." },
     ],
-    schedule: [{ time: "piątek 16:40–17:40", classes: ["przedszkole-5", "przedszkole-6"] }],
+    schedule: [
+      { time: "wtorek 17:10–18:10", classes: ["przedszkole-5", "przedszkole-6"] },
+      { time: "czwartek 17:30–18:30", note: "grupa rozwijająca", classes: ["kl1", "kl2", "kl3"] },
+    ],
   },
   {
     id: "terapia-psychologiczna",
     track: "podstawowa",
     title: "Terapia psychologiczna",
-    description: "Indywidualne spotkania z psychologiem dla dzieci i młodzieży, po wcześniejszym umówieniu terminu.",
+    description: "Indywidualne spotkania z psychologiem w bezpiecznej, przyjaznej atmosferze - wsparcie dopasowane do potrzeb dziecka lub nastolatka, po wcześniejszym umówieniu terminu.",
     ageGroup: "5-14 lat",
     image: "https://images.unsplash.com/photo-1516534775068-ba3e7458af70?auto=format&fit=crop&w=600&h=450&q=80",
     forWhom: [
@@ -232,7 +234,7 @@ const COURSES = [
     id: "terapia-rodzinna",
     track: "podstawowa",
     title: "Terapia rodzinna",
-    description: "Wsparcie terapeutyczne dla całej rodziny, po wcześniejszym umówieniu terminu.",
+    description: "Wsparcie terapeutyczne dla całej rodziny w trudnych momentach - pomagamy odbudować komunikację i wzajemne zrozumienie, po wcześniejszym umówieniu terminu.",
     ageGroup: "Cała rodzina",
     image: "https://images.unsplash.com/photo-1516534775068-ba3e7458af70?auto=format&fit=crop&w=600&h=450&q=80",
     forWhom: [
@@ -247,7 +249,7 @@ const COURSES = [
     faq: [
       { question: "Czy na spotkanie musi przyjść cała rodzina?", answer: "Zakres uczestników ustalamy indywidualnie, w zależności od potrzeb - może to być cała rodzina lub wybrani jej członkowie." },
       { question: "Jak umówić termin spotkania?", answer: "Po zapisie skontaktujemy się, aby ustalić dogodny termin." },
-      { question: "Czy potrzebne jest skierowanie?", answer: "Nie, skierowanie nie jest wymagane - wystarczy zgłoszenie poprzez formularz zapisu." },
+      { question: "Ile trwa spotkanie?", answer: "Pojedyncza sesja trwa 50 minut - w razie potrzeby wspólnie ustalamy dalszy plan spotkań." },
     ],
     schedule: [{ time: "czwartek 17:00–17:50", note: "po wcześniejszym umówieniu", classes: "all" }],
   },
@@ -257,17 +259,17 @@ const TESTIMONIALS = [
   {
     quote: "Zosia w końcu polubiła czytanie - zajęcia są prowadzone z ogromną cierpliwością i ciepłem.",
     author: "Anna",
-    role: "mama Zosi (7 lat)",
+    role: "mama Zosi (6 lat)",
   },
   {
-    quote: "Kuba przygotowuje się do matury z angielskiego i widać u niego dużo więcej pewności siebie.",
+    quote: "Kuba nabrał pewności siebie w kontaktach z rówieśnikami - zajęcia TUS naprawdę mu w tym pomogły.",
     author: "Marek",
-    role: "tata Kuby (16 lat)",
+    role: "tata Kuby (9 lat)",
   },
   {
-    quote: "Konwersacje w małej grupie sprawiły, że w końcu nie boję się mówić po niemiecku na głos.",
-    author: "Ola",
-    role: "uczennica liceum",
+    quote: "Ola przełamała barierę i w końcu nie boi się mówić po niemiecku na zajęciach.",
+    author: "Iwona",
+    role: "mama Oli (klasa 5)",
   },
 ];
 
@@ -278,11 +280,11 @@ const FAQS = [
   },
   {
     question: "Dla jakich grup wiekowych prowadzicie zajęcia?",
-    answer: "Prowadzimy zajęcia dla dzieci ze szkoły podstawowej oraz dla uczniów liceum i technikum - oferta jest dopasowana do każdej z tych grup.",
+    answer: "Obecnie prowadzimy zajęcia dla dzieci w wieku od 5 do 14 lat - od przedszkola po szkołę podstawową. Oferta dla uczniów liceum i technikum jest w przygotowaniu.",
   },
   {
     question: "Gdzie odbywają się zajęcia?",
-    answer: "Zajęcia odbywają się stacjonarnie w naszej placówce, a wybrane kursy dostępne są także online - szczegóły ustalamy indywidualnie po zapisie.",
+    answer: "Zajęcia odbywają się stacjonarnie w naszej placówce przy ul. Zamkowej 39 w Pabianicach.",
   },
   {
     question: "Czy można zapisać się w trakcie roku szkolnego?",
