@@ -28,6 +28,8 @@ zaufanie.
   bez tego generator domyślnie robi wnętrza domowe.
 - **Wygląd**: jasna karnacja („light skin tone") - dopisane w każdym prompt-cie, w którym pojawiają
   się osoby.
+- **Płeć**: prompty z jednym dzieckiem naprzemiennie pokazują dziewczynkę i chłopca (patrz numeracja
+  niżej), a te z kilkorgiem dzieci mieszają obie płcie w kadrze.
 - **Spójność**: to samo ciepłe wnętrze (drewniane tony, rośliny, jasne ściany) w każdym zdjęciu, żeby
   całość wyglądała jak jedna sesja zdjęciowa w placówce, a nie zbiór przypadkowych stocków.
 - **Zajęcia wrażliwe** (terapia): nigdy nie portretować dziecka „w trakcie terapii" wprost — to może
@@ -52,7 +54,7 @@ Po wygenerowaniu zapisz plik dokładnie pod nazwą podaną przy każdym prompt-c
 - **Proporcje:** kwadrat (1:1)
 
 ```
-a smiling 8-year-old child, light skin tone, holding an open picture book, sitting
+a smiling 8-year-old girl, light skin tone, holding an open picture book, sitting
 by a sunlit window in a classroom at a children's after-school activity center, warm golden light,
 candid editorial photography style, genuine joyful expression, shallow depth of
 field, shot on 50mm lens, warm color grade, high detail, no text overlays, no logos,
@@ -66,7 +68,7 @@ educational center setting, not a home setting
 - **Proporcje:** poziomy (3:2)
 
 ```
-a 5-year-old child, light skin tone, pointing at letters in a colorful picture book,
+a 5-year-old boy, light skin tone, pointing at letters in a colorful picture book,
 sitting on a rug in a cozy reading corner of a classroom at a children's after-school activity center,
 warm wooden shelving with books in the background, natural window light, candid
 editorial photography style, genuine curious expression, shallow depth of field,
@@ -81,8 +83,8 @@ educational center setting, not a home setting
 - **Proporcje:** poziomy (3:2)
 
 ```
-an 8-year-old child, light skin tone, looking curiously at a tablet screen with a
-friendly young teacher, also light skin tone, pointing something out beside them, in a bright classroom at a children's after-school
+an 8-year-old girl, light skin tone, looking curiously at a tablet screen with a
+friendly young teacher, also light skin tone, pointing something out beside her, in a bright classroom at a children's after-school
 activity center, warm sunlit room with plants, candid editorial photography style,
 genuine curious smile, shallow depth of field, shot on 50mm lens, warm golden color
 grade, high detail, no text overlays, no logos, no visible screen content,
@@ -96,7 +98,7 @@ educational center setting, not a home setting
 - **Proporcje:** poziomy (3:2)
 
 ```
-two children around 9 years old, light skin tone, sitting across a wooden table with
+a girl and a boy, around 9 years old, light skin tone, sitting across a wooden table with
 flashcards and an open notebook, mid-conversation, in a warm sunlit classroom corner with plants at a
 children's after-school activity center, candid editorial photography style, genuine
 engaged expressions, shallow depth of field, shot on 50mm lens, warm golden color
@@ -111,9 +113,9 @@ home setting
 - **Proporcje:** poziomy (3:2)
 
 ```
-a 7-year-old child, light skin tone, writing carefully in a notebook at a wooden desk
+a 7-year-old boy, light skin tone, writing carefully in a notebook at a wooden desk
 in a classroom at a children's after-school activity center, close on hands and notebook with the
-child's smiling face softly out of focus behind, warm natural light, candid
+boy's smiling face softly out of focus behind, warm natural light, candid
 editorial photography style, shallow depth of field, shot on 50mm lens, warm golden
 color grade, high detail, no text overlays, no logos, educational center setting,
 not a home setting
@@ -126,7 +128,7 @@ not a home setting
 - **Proporcje:** poziomy (3:2)
 
 ```
-an 8-year-old child, light skin tone, arranging colorful counting blocks on a wooden
+an 8-year-old girl, light skin tone, arranging colorful counting blocks on a wooden
 table in a classroom at a children's after-school activity center, focused and smiling, warm
 sunlit room, candid editorial photography style, genuine engaged expression,
 shallow depth of field, shot on 50mm lens, warm golden color grade, high detail,
@@ -140,7 +142,7 @@ no text overlays, no logos, educational center setting, not a home setting
 - **Proporcje:** poziomy (3:2)
 
 ```
-a small group of four children, light skin tone, sitting in a circle on a rug in a
+a small group of children (two girls and two boys), light skin tone, sitting in a circle on a rug in a
 classroom at a children's after-school activity center, laughing together during a cooperative
 game, warm sunlit room, candid editorial photography style, genuine joyful
 expressions, shallow depth of field, shot on 35mm lens, warm golden color grade,
@@ -155,7 +157,7 @@ setting
 - **Proporcje:** poziomy (3:2)
 
 ```
-a 6-year-old child, light skin tone, playing with a simple colorful coding toy
+a 6-year-old boy, light skin tone, playing with a simple colorful coding toy
 (wooden blocks with directional arrows), sitting on the floor in a classroom at a children's
 after-school activity center, curious smile, warm sunlit room, candid editorial
 photography style, shallow depth of field, shot on 50mm lens, warm golden color
@@ -188,7 +190,7 @@ no logos, educational center setting, not a home setting
 - **Proporcje:** poziomy (3:2)
 
 ```
-a parent and child, light skin tone, sitting side by side on a cozy sofa in a warm
+a father and his young daughter, light skin tone, sitting side by side on a cozy sofa in a warm
 counseling room at a children's after-school activity center, hands gently clasped, warm natural light,
 soft focus on a shared moment rather than faces, editorial photography style, warm
 golden color grade, shallow depth of field, high detail, no text overlays, no logos,

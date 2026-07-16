@@ -24,7 +24,7 @@ const COURSES = [
     title: "Nauka czytania",
     description: "Pomagamy przedszkolakom pokochać czytanie - w małych grupach, we własnym tempie, bez presji i porównywania z innymi dziećmi.",
     ageGroup: "5-6 lat",
-    image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&h=450&q=80",
+    image: "/assets/images/nauka-czytania.webp",
     forWhom: [
       "Przedszkolaków w wieku 5-6 lat, którzy dopiero zaczynają przygodę z literami",
       "Dzieci, które potrzebują więcej czasu i cierpliwości w nauce czytania",
@@ -50,7 +50,7 @@ const COURSES = [
     title: "Zajęcia z Gemini AI",
     description: "Bezpieczne i świadome wprowadzenie w świat sztucznej inteligencji - dzieci uczą się korzystać z AI z ciekawością, a nie obawą.",
     ageGroup: "5-14 lat",
-    image: "https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?auto=format&fit=crop&w=600&h=450&q=80",
+    image: "/assets/images/gemini-ai.webp",
     forWhom: [
       "Dzieci ciekawych nowych technologii, w wieku od przedszkola po klasę 8",
       "Uczniów, którzy chcą oswoić się ze sztuczną inteligencją w bezpieczny, kontrolowany sposób",
@@ -78,7 +78,7 @@ const COURSES = [
     title: "Język niemiecki",
     description: "Nauka języka niemieckiego w małych grupach dopasowanych do wieku i poziomu - od zerówki po klasę 8, z możliwością zajęć indywidualnych.",
     ageGroup: "6-14 lat",
-    image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=600&h=450&q=80",
+    image: "/assets/images/niemiecki-sp.webp",
     forWhom: [
       "Uczniów od zerówki po klasę 8, w grupach dopasowanych do wieku i poziomu",
       "Dzieci zaczynających naukę niemieckiego od podstaw oraz te, które chcą go rozwijać",
@@ -108,7 +108,7 @@ const COURSES = [
     title: "Zajęcia wyrównawcze - język polski",
     description: "Dodatkowe wsparcie z języka polskiego dla uczniów klas 1-3 - nadrabiamy zaległości i budujemy pewność siebie w czytaniu i pisaniu.",
     ageGroup: "7-9 lat",
-    image: "https://images.unsplash.com/photo-1580894732444-8ecded7900cd?auto=format&fit=crop&w=600&h=450&q=80",
+    image: "/assets/images/wyrownawcze-polski.webp",
     forWhom: [
       "Uczniów klas 1-3, którzy potrzebują dodatkowego wsparcia z języka polskiego",
       "Dzieci chcące nadrobić zaległości lub utrwalić materiał ze szkoły",
@@ -135,7 +135,7 @@ const COURSES = [
     title: "Zajęcia wyrównawcze - matematyka",
     description: "Zajęcia wyrównawcze i rozwijające zainteresowania matematyczne dla uczniów klas 1-3 - bez stresu i presji.",
     ageGroup: "7-9 lat",
-    image: "https://images.unsplash.com/photo-1596495578065-6e0763fa1178?auto=format&fit=crop&w=600&h=450&q=80",
+    image: "/assets/images/wyrownawcze-matematyka.webp",
     forWhom: [
       "Uczniów klas 1-3 potrzebujących wsparcia z matematyki",
       "Dzieci, które chcą rozwijać zainteresowania matematyczne bez presji i stresu",
@@ -162,7 +162,7 @@ const COURSES = [
     title: "TUS - trening umiejętności społecznych",
     description: "Dzieci uczą się współpracy, empatii i radzenia sobie z emocjami w grupie rówieśniczej - w praktyce, poprzez zabawę i wspólne ćwiczenia.",
     ageGroup: "5-14 lat",
-    image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=600&h=450&q=80",
+    image: "/assets/images/tus.webp",
     forWhom: [
       "Dzieci w wieku 5-14 lat, które chcą rozwijać kompetencje społeczne",
       "Uczniów potrzebujących wsparcia w budowaniu relacji z rówieśnikami",
@@ -187,7 +187,7 @@ const COURSES = [
     title: "Zajęcia matematyczne z elementami programowania",
     description: "Nauka matematyki połączona z pierwszymi krokami w programowaniu - od przedszkola po klasę 3.",
     ageGroup: "5-9 lat",
-    image: "https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?auto=format&fit=crop&w=600&h=450&q=80",
+    image: "/assets/images/matematyka-programowanie.webp",
     forWhom: [
       "Przedszkolaków w wieku 5-6 lat ciekawych matematyki i technologii",
       "Uczniów klas 1-3, którzy chcą rozwijać umiejętności matematyczne i pierwsze kroki w programowaniu",
@@ -213,7 +213,7 @@ const COURSES = [
     title: "Terapia psychologiczna",
     description: "Indywidualne spotkania z psychologiem w bezpiecznej, przyjaznej atmosferze - wsparcie dopasowane do potrzeb dziecka lub nastolatka, po wcześniejszym umówieniu terminu.",
     ageGroup: "5-14 lat",
-    image: "https://images.unsplash.com/photo-1516534775068-ba3e7458af70?auto=format&fit=crop&w=600&h=450&q=80",
+    image: "/assets/images/terapia-psychologiczna.webp",
     forWhom: [
       "Dzieci i młodzieży potrzebujących indywidualnego wsparcia psychologicznego",
       "Rodzin szukających profesjonalnej pomocy w rozwoju emocjonalnym dziecka",
@@ -236,7 +236,7 @@ const COURSES = [
     title: "Terapia rodzinna",
     description: "Wsparcie terapeutyczne dla całej rodziny w trudnych momentach - pomagamy odbudować komunikację i wzajemne zrozumienie, po wcześniejszym umówieniu terminu.",
     ageGroup: "Cała rodzina",
-    image: "https://images.unsplash.com/photo-1516534775068-ba3e7458af70?auto=format&fit=crop&w=600&h=450&q=80",
+    image: "/assets/images/terapia-rodzinna.webp",
     forWhom: [
       "Rodzin szukających wsparcia w rozwiązywaniu trudności i konfliktów",
       "Rodziców i dzieci, którzy chcą poprawić wzajemną komunikację",

@@ -1,16 +1,107 @@
-<!doctype html>
+import fs from "node:fs";
+import vm from "node:vm";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const dataSrc = fs.readFileSync(path.join(ROOT, "js/data.js"), "utf8");
+const sandbox = {};
+vm.createContext(sandbox);
+vm.runInContext(dataSrc + "\nthis.COURSES = COURSES;", sandbox);
+const COURSES = sandbox.COURSES;
+
+const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+function checkList(items) {
+  return items.map((item) => `          <li>${esc(item)}</li>`).join("\n");
+}
+
+function pluralTermin(n) {
+  if (n === 1) return "termin";
+  const lastDigit = n % 10;
+  const lastTwo = n % 100;
+  if (lastDigit >= 2 && lastDigit <= 4 && !(lastTwo >= 12 && lastTwo <= 14)) return "terminy";
+  return "terminów";
+}
+
+function schedulePills(schedule) {
+  return schedule
+    .map((slot) => {
+      const label = `${slot.time}${slot.note ? ` (${slot.note})` : ""}`;
+      return `          <li class="schedule-pill">${esc(label)}</li>`;
+    })
+    .join("\n");
+}
+
+function faqAccordion(faq) {
+  return faq
+    .map((item, index) => {
+      const questionId = `course-faq-question-${index}`;
+      const answerId = `course-faq-answer-${index}`;
+      return `            <div class="accordion-item">
+              <h3 style="margin:0;">
+                <button type="button" class="faq-question" id="${questionId}"
+                  aria-expanded="false" aria-controls="${answerId}">
+                  <span>${esc(item.question)}</span>
+                  <span class="faq-icon" aria-hidden="true">+</span>
+                </button>
+              </h3>
+              <div class="faq-answer" id="${answerId}" role="region" aria-labelledby="${questionId}" data-open="false">
+                <p>${esc(item.answer)}</p>
+              </div>
+            </div>`;
+    })
+    .join("\n");
+}
+
+function page(course) {
+  const title = esc(course.title);
+  const desc = esc(course.description);
+  const age = esc(course.ageGroup);
+  const metaDescription = esc(
+    `${course.title} w Pabianicach - zajęcia pozalekcyjne dla grupy wiekowej ${course.ageGroup}. ${course.description}`
+  );
+  const courseJsonLd = JSON.stringify(
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      name: course.title,
+      description: course.description,
+      provider: {
+        "@type": "EducationalOrganization",
+        name: "Edukacyjna Przystań",
+        url: "https://edukacyjnaprzystan.pl/",
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "ul. Zamkowa 39",
+          postalCode: "95-200",
+          addressLocality: "Pabianice",
+          addressCountry: "PL",
+        },
+      },
+      audience: {
+        "@type": "EducationalAudience",
+        audienceType: `Dzieci - ${course.ageGroup}`,
+      },
+      url: `https://edukacyjnaprzystan.pl/kursy/${course.id}.html`,
+    },
+    null,
+    2
+  );
+
+  return `<!doctype html>
 <html lang="pl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zajęcia matematyczne z elementami programowania — Edukacyjna Przystań</title>
-  <meta name="description" content="Zajęcia matematyczne z elementami programowania w Pabianicach - zajęcia pozalekcyjne dla grupy wiekowej 5-9 lat. Nauka matematyki połączona z pierwszymi krokami w programowaniu - od przedszkola po klasę 3.">
-  <link rel="canonical" href="https://edukacyjnaprzystan.pl/kursy/matematyka-programowanie.html">
+  <title>${title} — Edukacyjna Przystań</title>
+  <meta name="description" content="${metaDescription}">
+  <link rel="canonical" href="https://edukacyjnaprzystan.pl/kursy/${course.id}.html">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Zajęcia matematyczne z elementami programowania — Edukacyjna Przystań">
-  <meta property="og:description" content="Nauka matematyki połączona z pierwszymi krokami w programowaniu - od przedszkola po klasę 3.">
-  <meta property="og:image" content="https://edukacyjnaprzystan.pl/assets/images/matematyka-programowanie.webp">
+  <meta property="og:title" content="${title} — Edukacyjna Przystań">
+  <meta property="og:description" content="${desc}">
+  <meta property="og:image" content="https://edukacyjnaprzystan.pl${course.image}">
   <meta property="og:locale" content="pl_PL">
 
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
@@ -27,29 +118,7 @@
 
   <!-- Dane strukturalne dla wyszukiwarek i asystentów AI -->
   <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Course",
-  "name": "Zajęcia matematyczne z elementami programowania",
-  "description": "Nauka matematyki połączona z pierwszymi krokami w programowaniu - od przedszkola po klasę 3.",
-  "provider": {
-    "@type": "EducationalOrganization",
-    "name": "Edukacyjna Przystań",
-    "url": "https://edukacyjnaprzystan.pl/",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "ul. Zamkowa 39",
-      "postalCode": "95-200",
-      "addressLocality": "Pabianice",
-      "addressCountry": "PL"
-    }
-  },
-  "audience": {
-    "@type": "EducationalAudience",
-    "audienceType": "Dzieci - 5-9 lat"
-  },
-  "url": "https://edukacyjnaprzystan.pl/kursy/matematyka-programowanie.html"
-}
+${courseJsonLd}
   </script>
 </head>
 <body class="has-sticky-cta">
@@ -72,10 +141,10 @@
         <li><a href="../kursy.html">Wszystkie kursy</a></li>
         <li><a href="../misja.html">Misja</a></li>
         <li><a href="../kontakt.html">Kontakt</a></li>
-        <li><a class="btn btn-primary nav-cta-mobile js-signup-trigger" href="#" data-course-id="matematyka-programowanie" data-course-title="Zajęcia matematyczne z elementami programowania">Zapisz się</a></li>
+        <li><a class="btn btn-primary nav-cta-mobile js-signup-trigger" href="#" data-course-id="${course.id}" data-course-title="${title}">Zapisz się</a></li>
       </ul>
 
-      <a class="btn btn-primary nav-cta js-signup-trigger" href="#" data-course-id="matematyka-programowanie" data-course-title="Zajęcia matematyczne z elementami programowania">Zapisz się</a>
+      <a class="btn btn-primary nav-cta js-signup-trigger" href="#" data-course-id="${course.id}" data-course-title="${title}">Zapisz się</a>
     </nav>
   </header>
 
@@ -87,9 +156,9 @@
     <div class="container course-detail-layout">
       <div class="course-detail-content">
         <section class="course-detail-header reveal">
-          <span class="course-age-badge">5-9 lat</span>
-          <h1>Zajęcia matematyczne z elementami programowania</h1>
-          <p class="course-detail-lead">Nauka matematyki połączona z pierwszymi krokami w programowaniu - od przedszkola po klasę 3.</p>
+          <span class="course-age-badge">${age}</span>
+          <h1>${title}</h1>
+          <p class="course-detail-lead">${desc}</p>
 
           <div class="course-detail-facts">
             <div class="value-chip">
@@ -102,37 +171,33 @@
             </div>
             <div class="value-chip">
               <span class="value-icon" aria-hidden="true">🗓️</span>
-              2 terminy do wyboru
+              ${course.schedule.length} ${pluralTermin(course.schedule.length)} do wyboru
             </div>
           </div>
 
           <div class="course-detail-media">
-            <img src="/assets/images/matematyka-programowanie.webp" alt="Zajęcia matematyczne z elementami programowania" width="800" height="450" loading="eager">
+            <img src="${course.image}" alt="${title}" width="800" height="450" loading="eager">
           </div>
         </section>
 
         <section class="course-detail-block reveal">
           <h2>Dla kogo są te zajęcia</h2>
           <ul class="check-list">
-          <li>Przedszkolaków w wieku 5-6 lat ciekawych matematyki i technologii</li>
-          <li>Uczniów klas 1-3, którzy chcą rozwijać umiejętności matematyczne i pierwsze kroki w programowaniu</li>
+${checkList(course.forWhom)}
           </ul>
         </section>
 
         <section class="course-detail-block reveal">
           <h2>Czego nauczy się dziecko</h2>
           <ul class="check-list">
-          <li>Podstawy liczenia i logicznego myślenia</li>
-          <li>Pierwsze, zabawowe kroki w programowaniu</li>
-          <li>Rozwiązywanie prostych zagadek i łamigłówek</li>
+${checkList(course.whatTheyLearn)}
           </ul>
         </section>
 
         <section class="course-detail-block reveal">
           <h2>Terminy zajęć</h2>
           <ul class="course-schedule">
-          <li class="schedule-pill">wtorek 17:10–18:10</li>
-          <li class="schedule-pill">czwartek 17:30–18:30 (grupa rozwijająca)</li>
+${schedulePills(course.schedule)}
           </ul>
           <p class="schedule-hint">Dokładny termin dobierzemy razem z Tobą podczas zapisu, na podstawie klasy dziecka.</p>
         </section>
@@ -140,54 +205,19 @@
         <section class="course-detail-block reveal">
           <h2>Najczęstsze pytania</h2>
           <div class="accordion">
-            <div class="accordion-item">
-              <h3 style="margin:0;">
-                <button type="button" class="faq-question" id="course-faq-question-0"
-                  aria-expanded="false" aria-controls="course-faq-answer-0">
-                  <span>Czy dziecko musi umieć liczyć?</span>
-                  <span class="faq-icon" aria-hidden="true">+</span>
-                </button>
-              </h3>
-              <div class="faq-answer" id="course-faq-answer-0" role="region" aria-labelledby="course-faq-question-0" data-open="false">
-                <p>Nie, zajęcia wprowadzają podstawy liczenia i logicznego myślenia od zera, w formie zabawy.</p>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <h3 style="margin:0;">
-                <button type="button" class="faq-question" id="course-faq-question-1"
-                  aria-expanded="false" aria-controls="course-faq-answer-1">
-                  <span>Czy używacie komputerów?</span>
-                  <span class="faq-icon" aria-hidden="true">+</span>
-                </button>
-              </h3>
-              <div class="faq-answer" id="course-faq-answer-1" role="region" aria-labelledby="course-faq-question-1" data-open="false">
-                <p>Tak, w przystępnej, dopasowanej do wieku formie - pierwsze kroki w programowaniu wprowadzamy stopniowo, poprzez zabawę.</p>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <h3 style="margin:0;">
-                <button type="button" class="faq-question" id="course-faq-question-2"
-                  aria-expanded="false" aria-controls="course-faq-answer-2">
-                  <span>Co zabrać na pierwsze zajęcia?</span>
-                  <span class="faq-icon" aria-hidden="true">+</span>
-                </button>
-              </h3>
-              <div class="faq-answer" id="course-faq-answer-2" role="region" aria-labelledby="course-faq-question-2" data-open="false">
-                <p>Wystarczy dobry humor i ciekawość - resztę materiałów zapewniamy na miejscu.</p>
-              </div>
-            </div>
+${faqAccordion(course.faq)}
           </div>
         </section>
       </div>
 
       <aside class="course-detail-sidebar">
         <div class="course-detail-card">
-          <img src="/assets/images/matematyka-programowanie.webp" alt="" width="400" height="250">
+          <img src="${course.image}" alt="" width="400" height="250">
           <div class="course-detail-card-body">
-            <span class="course-age-badge">5-9 lat</span>
-            <h3>Zajęcia matematyczne z elementami programowania</h3>
+            <span class="course-age-badge">${age}</span>
+            <h3>${title}</h3>
             <button type="button" class="btn btn-primary btn-block js-signup-trigger"
-              data-course-id="matematyka-programowanie" data-course-title="Zajęcia matematyczne z elementami programowania">
+              data-course-id="${course.id}" data-course-title="${title}">
               Zapisz się
             </button>
             <p class="course-detail-card-note">Odpowiadamy w ciągu 24 godzin.</p>
@@ -203,18 +233,18 @@
           <h2>Inne zajęcia z tej kategorii</h2>
         </div>
         <div class="course-grid" id="related-courses-grid"
-          data-current-course-id="matematyka-programowanie" data-track="podstawowa"></div>
+          data-current-course-id="${course.id}" data-track="${course.track}"></div>
       </div>
     </section>
   </main>
 
   <div class="course-sticky-cta">
     <div class="course-sticky-cta-info">
-      <strong>Zajęcia matematyczne z elementami programowania</strong>
-      <span>5-9 lat</span>
+      <strong>${title}</strong>
+      <span>${age}</span>
     </div>
     <button type="button" class="btn btn-primary js-signup-trigger"
-      data-course-id="matematyka-programowanie" data-course-title="Zajęcia matematyczne z elementami programowania">
+      data-course-id="${course.id}" data-course-title="${title}">
       Zapisz się
     </button>
   </div>
@@ -342,3 +372,12 @@
   <script src="../js/main.js" defer></script>
 </body>
 </html>
+`;
+}
+
+const outDir = path.join(ROOT, "kursy");
+for (const course of COURSES) {
+  const html = page(course);
+  fs.writeFileSync(path.join(outDir, `${course.id}.html`), html, "utf8");
+  console.log("wrote", course.id + ".html");
+}

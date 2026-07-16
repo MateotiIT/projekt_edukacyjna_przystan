@@ -153,8 +153,11 @@ a.nav-cta-mobile {
 }
 
 /* ---------- Hero ---------- */
+/* Homepage sections (.hero through .contact) are adjacent top-level sections,
+   so the global `section { padding-block }` rule stacks on both sides of each
+   seam (96px + 96px) - tighten it here so the gaps aren't huge. */
 .hero {
-  padding-block: var(--space-8) var(--space-9);
+  padding-block: var(--space-8) var(--space-6);
   overflow: hidden;
 }
 
@@ -258,6 +261,10 @@ a.nav-cta-mobile {
 }
 
 /* ---------- About ---------- */
+.about {
+  padding-block: var(--space-6);
+}
+
 .about .container {
   display: grid;
   gap: var(--space-6);
@@ -286,6 +293,10 @@ a.nav-cta-mobile {
 }
 
 /* ---------- Why us (Dlaczego warto) ---------- */
+.why {
+  padding-block: var(--space-6);
+}
+
 .why-grid {
   display: grid;
   gap: var(--space-5);
@@ -332,6 +343,10 @@ a.nav-cta-mobile {
 }
 
 /* ---------- Courses ---------- */
+.courses {
+  padding-block: var(--space-6);
+}
+
 /* .courses-intro/.courses and .courses-contact-cta/footer (on kursy.html) are
    adjacent top-level sections, so the global `section { padding-block }` stacks
    on both sides of each seam - tighten it here (same fix as .mission-hero/.mission-values). */
@@ -397,6 +412,10 @@ a.nav-cta-mobile {
 }
 
 /* ---------- Process (Jak to dziala) ---------- */
+.process {
+  padding-block: var(--space-6);
+}
+
 .process-steps {
   display: grid;
   gap: var(--space-6);
@@ -429,6 +448,10 @@ a.nav-cta-mobile {
 }
 
 /* ---------- Testimonials ---------- */
+.testimonials {
+  padding-block: var(--space-6);
+}
+
 .testimonial-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -436,11 +459,19 @@ a.nav-cta-mobile {
 }
 
 /* ---------- FAQ ---------- */
+.faq {
+  padding-block: var(--space-6);
+}
+
 .faq .container {
   max-width: 780px;
 }
 
 /* ---------- Contact ---------- */
+.contact {
+  padding-block: var(--space-6);
+}
+
 .contact .container {
   display: grid;
   gap: var(--space-6);
@@ -709,6 +740,66 @@ body.has-sticky-cta {
   }
 }
 
+/* ---------- 404 ---------- */
+.not-found-inner {
+  max-width: 560px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.not-found-mascot {
+  width: 96px;
+  margin: 0 auto var(--space-5);
+  filter: drop-shadow(var(--shadow-md));
+}
+
+.error-code {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(4rem, 12vw, 7rem);
+  line-height: 1;
+  color: var(--color-primary);
+  margin-bottom: var(--space-2);
+}
+
+.not-found .hero-actions {
+  justify-content: center;
+  margin-top: var(--space-6);
+}
+
+/* ---------- Legal pages (polityka prywatności) ---------- */
+.legal-page .container {
+  max-width: 760px;
+}
+
+.legal-content {
+  text-align: left;
+}
+
+.legal-content h2 {
+  font-size: var(--fs-h3);
+  margin-top: var(--space-8);
+}
+
+.legal-content h2:first-of-type {
+  margin-top: 0;
+}
+
+.legal-list {
+  list-style: disc;
+  padding-left: var(--space-5);
+  margin: 0 0 var(--space-4);
+  color: var(--color-ink-muted);
+}
+
+.legal-list li {
+  margin-bottom: var(--space-2);
+}
+
+.legal-content .check-list {
+  margin: var(--space-2) 0 var(--space-4);
+}
+
 /* ---------- Misja ---------- */
 /* .mission-hero/.mission-values are adjacent top-level sections, so the global
    `section { padding-block }` stacks on both sides of the seam (96px + 96px) -
@@ -748,6 +839,14 @@ body.has-sticky-cta {
 
 .image-placeholder-icon {
   font-size: 2.5rem;
+}
+
+.mission-photo {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
 }
 
 .mission-cta {
