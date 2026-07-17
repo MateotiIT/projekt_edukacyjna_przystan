@@ -24,8 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  const messengerLink = document.getElementById("messenger-link");
-  if (messengerLink) {
-    messengerLink.href = `https://m.me/${MESSENGER_USERNAME}`;
-  }
+  document.querySelectorAll(".js-messenger-link").forEach((link) => {
+    link.href = `https://m.me/${MESSENGER_USERNAME}`;
+  });
 });

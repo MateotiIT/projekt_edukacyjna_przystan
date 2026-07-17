@@ -71,10 +71,18 @@ function handleContactSubmit(event) {
 
   setContactFormState("sending");
 
+  const name = form.name.value.trim();
+  const contact = form.contact.value.trim();
+  const message = form.message.value.trim();
+
+  // Pola współdzielonego szablonu powiadomień "do mnie" (patrz email-templates/powiadomienie-admin.html).
+  // Formularz kontaktowy wysyła wyłącznie do administratora - bez potwierdzenia do nadawcy.
   const templateParams = {
-    name: form.name.value.trim(),
-    contact: form.contact.value.trim(),
-    message: form.message.value.trim(),
+    subject: `Nowa wiadomość od ${name} (formularz kontaktowy)`,
+    badge: "Nowa wiadomość z formularza kontaktowego",
+    title: name,
+    reply_to: contact,
+    content: `Kontakt: ${contact}\n\nWiadomość:\n${message}`,
   };
 
   if (typeof emailjs === "undefined") {
@@ -83,7 +91,7 @@ function handleContactSubmit(event) {
   }
 
   Promise.resolve()
-    .then(() => emailjs.send(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.contactTemplateId, templateParams))
+    .then(() => emailjs.send(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.templateId, templateParams))
     .then(() => setContactFormState("success"))
     .catch(() => setContactFormState("error"));
 }

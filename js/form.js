@@ -1,5 +1,6 @@
-const CONTACT_REGEX = /^(\+?\d[\d\s-]{8,}|[^\s@]+@[^\s@]+\.[^\s@]+)$/;
 const PHONE_REGEX = /^\+?\d[\d\s-]{8,}$/;
+const EMAIL_ONLY_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const NO_TERM_LABEL = "Brak wybranego terminu - ustalimy go indywidualnie telefonicznie.";
 
 function setFieldError(fieldId, message) {
   const field = document.getElementById(fieldId);
@@ -58,8 +59,8 @@ function validateForm(form) {
     setFieldError("parent-phone", "");
   }
 
-  if (!parentContact || !CONTACT_REGEX.test(parentContact)) {
-    setFieldError("parent-contact", "Podaj poprawny e-mail lub numer telefonu.");
+  if (!parentContact || !EMAIL_ONLY_REGEX.test(parentContact)) {
+    setFieldError("parent-contact", "Podaj poprawny adres e-mail.");
     valid = false;
   } else {
     setFieldError("parent-contact", "");
@@ -133,17 +134,35 @@ function handleSubmit(event) {
   setFormState("sending");
 
   const childClassOption = CHILD_CLASS_OPTIONS.find((option) => option.value === form.child_class.value);
+  const courseTitle = document.getElementById("modal-course-name").textContent;
+  const parentContact = form.parent_contact.value.trim();
+  const parentName = form.parent_name.value.trim();
+  const childName = form.child_name.value.trim();
+  const childClassLabel = childClassOption ? childClassOption.label : form.child_class.value;
+  const selectedTerm = (form.selected_term ? form.selected_term.value : "") || NO_TERM_LABEL;
 
   const templateParams = {
-    course_title: document.getElementById("modal-course-name").textContent,
-    course_id: form.course_id.value,
-    child_name: form.child_name.value.trim(),
-    child_class: childClassOption ? childClassOption.label : form.child_class.value,
-    selected_term: form.selected_term ? form.selected_term.value : "",
-    parent_name: form.parent_name.value.trim(),
-    parent_phone: form.parent_phone.value.trim(),
-    parent_contact: form.parent_contact.value.trim(),
-    terms_accepted: form.terms_accept.checked ? "tak" : "nie",
+    // Pola współdzielonego szablonu powiadomień "do mnie" (patrz email-templates/powiadomienie-admin.html).
+    subject: `Nowe zgłoszenie: ${courseTitle} — ${childName}`,
+    badge: "Nowe zgłoszenie na zajęcia",
+    title: courseTitle,
+    reply_to: parentContact,
+    content:
+      `Dziecko: ${childName} (${childClassLabel})\n` +
+      `Termin: ${selectedTerm}\n` +
+      `Rodzic/opiekun: ${parentName}\n` +
+      `Telefon: ${form.parent_phone.value.trim()}\n` +
+      `E-mail: ${parentContact}\n` +
+      `Regulamin zaakceptowany: ${form.terms_accept.checked ? "tak" : "nie"}\n` +
+      `ID zajęć: ${form.course_id.value}`,
+
+    // Pola szablonu potwierdzenia "do rodzica" (patrz email-templates/zgloszenie-rodzic-potwierdzenie.html).
+    course_title: courseTitle,
+    child_name: childName,
+    child_class: childClassLabel,
+    selected_term: selectedTerm,
+    parent_name: parentName,
+    to_email: parentContact,
   };
 
   if (typeof emailjs === "undefined") {
@@ -151,9 +170,18 @@ function handleSubmit(event) {
     return;
   }
 
-  Promise.resolve()
-    .then(() => emailjs.send(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.templateId, templateParams))
-    .then(() => setFormState("success"))
+  emailjs
+    .send(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.templateId, templateParams)
+    .then(() => {
+      setFormState("success");
+      // Potwierdzenie do rodzica jest "best effort" - jego ewentualny błąd nie cofa
+      // już pokazanego sukcesu, bo zgłoszenie dotarło tam gdzie najważniejsze - do nas.
+      if (templateParams.to_email) {
+        emailjs
+          .send(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.autoreplyTemplateId, templateParams)
+          .catch(() => {});
+      }
+    })
     .catch(() => setFormState("error"));
 }
 
